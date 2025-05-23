@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMarques Consultoria - Especialistas em Dropshipping</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #D4AF37;
+            --accent: #FFD700;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(90deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .animate-section:hover .section-title:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.1), 0 10px 10px -5px rgba(212, 175, 55, 0.04);
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-gold {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-gold:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .btn-gold:hover:after {
+            left: 100%;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+        }
+
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+
+        .wave {
+            animation: wave 8s linear infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(14deg);
+            }
+
+            20% {
+                transform: rotate(-8deg);
+            }
+
+            30% {
+                transform: rotate(14deg);
+            }
+
+            40% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            60% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        input,
+        textarea {
+            background-color: #2d2d2d;
+            color: #f3f4f6;
+            border-color: #444;
+        }
+
+        input:focus,
+        textarea:focus {
+            background-color: #3a3a3a;
+        }
+
+        .gradient-sidebar {
+            background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
+            border-right: 1px solid #333;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            animation: slideAnimation 16s infinite;
+        }
+
+        .slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slide:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .slide:nth-child(3) {
+            animation-delay: 8s;
+        }
+
+        .slide:nth-child(4) {
+            animation-delay: 12s;
+        }
+
+        @keyframes slideAnimation {
+
+            0%,
+            25% {
+                opacity: 1;
+            }
+
+            30%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .fade {
+            animation-timing-function: ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Header/Navbar -->
+    <header class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-filter backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-crown text-2xl text-yellow-500 mr-2"></i>
+                    <span class="text-xl font-bold text-white">MMarques <span
+                            class="text-yellow-500">Consultoria</span></span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-yellow-500 transition">Início</a>
+                    <a href="#about" class="nav-link text-white hover:text-yellow-500 transition">Sobre Nós</a>
+                    <a href="#services" class="nav-link text-white hover:text-yellow-500 transition">Serviços</a>
+                    <a href="#testimonials" class="nav-link text-white hover:text-yellow-500 transition">Depoimentos</a>
+                    <a href="#contact" class="nav-link text-white hover:text-yellow-500 transition">Contato</a>
+                </nav>
+
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-white hover:text-yellow-500 transition">Início</a>
+                <a href="#about" class="block py-2 text-white hover:text-yellow-500 transition">Sobre Nós</a>
+                <a href="#services" class="block py-2 text-white hover:text-yellow-500 transition">Serviços</a>
+                <a href="#testimonials" class="block py-2 text-white hover:text-yellow-500 transition">Depoimentos</a>
+                <a href="#contact" class="block py-2 text-white hover:text-yellow-500 transition">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="min-h-screen flex items-center justify-center bg-black pt-20 pb-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
+
+            <!-- Slideshow Container -->
+            <div class="absolute inset-0 slideshow-container">
+                <div class="slide fade" style="background-image: url('./imagens/mulherescritorio.jpg')"></div>
+                <div class="slide fade" style="background-image: url('./imagens/mulherimportação.jpg')"></div>
+                <div class="slide fade" style="background-image: url('./imagens/navioexportao.jpg')"></div>
+                <div class="slide fade" style="background-image: url('./imagens/logistica.jpeg')"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto text-center relative z-10 fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 slide-up">
+                MMarques <span class="text-yellow-500">Consultoria</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 slide-up" style="animation-delay: 0.2s">
+                Tudo que você precisa para saber sobre <span class="text-yellow-500 font-medium">Dropshipping,
+                    Importação e Exportação</span>
+            </p>
+            <a href="https://calendly.com/d/cm6r-k3w-z8n/30-minute-meeting?share_attribution=customize_once_and_share"
+                target="_blank"
+                class="btn-gold inline-block bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider slide-up"
+                style="animation-delay: 0.4s">
+                Agende uma Consultoria
+            </a>
+        </div>
+
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center slide-up" style="animation-delay: 0.6s">
+            <a href="#about" class="text-white animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-section">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-4">
+                    <span class="text-yellow-500">//</span> Sobre Nós
+                </h2>
+                <div class="w-24 h-1 gold-gradient mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    Seu parceiro estratégico para conquistar o mercado global com inteligência
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 fade-in max-w-[550px]">
+                    <div class="relative">
+                        <div class="absolute -inset-4 border-2 border-yellow-300 rounded-lg opacity-20"></div>
+                        <img src="./imagens/logo.png" alt="Equipe MMarques Consultoria"
+                            class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 fade-in" style="animation-delay: 0.3s">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
+                        Nossa <span class="text-yellow-500">Missão</span>
+                    </h3>
+                    <p class="text-gray-400 mb-6 text-lg">
+                        Na MMarques Consultoria, nossa missão é descomplicar o comércio internacional e impulsionar
+                        negócios por meio de soluções estratégicas em importação, exportação e dropshipping. Atuamos
+                        como ponte entre empreendedores e o mercado global, oferecendo orientação especializada, suporte
+                        técnico e inteligência de mercado para que nossos clientes possam tomar decisões seguras,
+                        eficientes e lucrativas.
+                    </p>
+                    <p class="text-gray-400 mb-6 text-lg">
+                        Nosso compromisso é transformar conhecimento em resultado, promovendo a competitividade de
+                        nossos clientes com agilidade, ética e excelência. Trabalhamos para que cada operação seja mais
+                        do que uma transação: seja uma oportunidade concreta de crescimento sustentável, inovação e
+                        expansão de fronteiras.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-yellow-500 mr-2 text-xl"></i>
+                            <span class="text-white">Consultoria Especializada</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-yellow-500 mr-2 text-xl"></i>
+                            <span class="text-white">Conexão com o Mercado Global</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-yellow-500 mr-2 text-xl"></i>
+                            <span class="text-white">Análise de Mercado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-section">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-4">
+                    <span class="text-yellow-500">//</span> Nossos Serviços
+                </h2>
+                <div class="w-24 h-1 gold-gradient mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    Soluções especializadas para cada etapa do seu negócio
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="service-card bg-gray-900 rounded-lg p-8 transition-all duration-300 hover:border-yellow-500 border border-gray-800 fade-in">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-user-graduate text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Mentoria Estratégicas</h3>
+                    <p class="text-gray-400 mb-4">
+                        Capacitação individual ou em grupo sobre os fundamentos e boas práticas de importação,
+                        exportação e dropshipping — ideal para empreendedores iniciantes ou empresas que desejam escalar
+                        com segurança.
+                    </p>
+                    <div class="flex items-center text-yellow-500 font-medium">
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-900 rounded-lg p-8 transition-all duration-300 hover:border-yellow-500 border border-gray-800 fade-in"
+                    style="animation-delay: 0.2s">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-rocket text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Assessoria em Importação Personalizada</h3>
+                    <p class="text-gray-400 mb-4">
+                        Acompanhamento completo do processo de importação: desde a escolha de fornecedores no exterior
+                        até o desembaraço aduaneiro, cálculo de custos e entrega no Brasil.
+                    </p>
+                    <div class="flex items-center text-yellow-500 font-medium">
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-900 rounded-lg p-8 transition-all duration-300 hover:border-yellow-500 border border-gray-800 fade-in"
+                    style="animation-delay: 0.4s">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-chess-knight text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Estratégias de Produto</h3>
+                    <p class="text-gray-400 mb-4">
+                        Identificação de produtos com alto potencial de venda, análise de tendências e avaliação da
+                        concorrência para ajudar você a montar um portfólio lucrativo e alinhado com a demanda do
+                        mercado.
+                    </p>
+                    <div class="flex items-center text-yellow-500 font-medium">
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-900 rounded-lg p-8 transition-all duration-300 hover:border-yellow-500 border border-gray-800 fade-in"
+                    style="animation-delay: 0.6s">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-shipping-fast text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Suporte para Importação</h3>
+                    <p class="text-gray-400 mb-4">
+                        Auxílio na preparação da empresa para exportar: análise de mercado externo, adequação de
+                        produtos, documentação, logística internacional e estratégias de entrada em novos mercados.
+                    </p>
+                    <div class="flex items-center text-yellow-500 font-medium">
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16 fade-in" style="animation-delay: 0.8s">
+                <a href="#contact"
+                    class="btn-gold inline-block bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">
+                    Quero Começar Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-section">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-4">
+                    <span class="text-yellow-500">//</span> Depoimentos
+                </h2>
+                <div class="w-24 h-1 gold-gradient mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    O que nossos clientes dizem sobre nossos serviços
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-800 rounded-lg p-8 border border-gray-700 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "A MMarques Consultoria transformou completamente meu negócio. Em 3 meses multipliquei meus
+                        lucros por 5 com suas estratégias de produto e anúncios."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Cliente"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-white font-bold">Ana Carolina</h4>
+                            <p class="text-yellow-500 text-sm">Empreendedora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-800 rounded-lg p-8 border border-gray-700 fade-in"
+                    style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "Não sabia por onde começar no dropshipping. Com a mentoria 1:1 da MMarques, em 2 meses já
+                        estava faturando R$15k/mês. Recomendo demais!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-white font-bold">Ricardo Almeida</h4>
+                            <p class="text-yellow-500 text-sm">Personal Fitness</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-800 rounded-lg p-8 border border-gray-700 fade-in"
+                    style="animation-delay: 0.4s">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "O suporte para importação foi essencial para escalar meu negócio. Encontraram fornecedores
+                        premium com preços imbatíveis e logística rápida."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Cliente"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-white font-bold">Juliana Santos</h4>
+                            <p class="text-yellow-500 text-sm">Empresária</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-section">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-4">
+                    <span class="text-yellow-500">//</span> Fale Conosco
+                </h2>
+                <div class="w-24 h-1 gold-gradient mx-auto mb-8"></div>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                    Pronto para transformar seu negócio? Entre em contato agora mesmo
+                </p>
+            </div>
+
+            <main class="flex-grow container mx-auto px-4 py-12">
+                <div class="max-w-4xl mx-auto">
+                    <div class="rounded-xl overflow-hidden card">
+                        <div class="md:flex">
+                            <div class="md:w-1/3 gradient-sidebar p-8 flex flex-col items-center justify-center">
+                                <div
+                                    class="w-32 h-32 rounded-full bg-black bg-opacity-40 flex items-center justify-center mb-6 border border-gray-700">
+                                    <img src="imagens/fotorafael.png" alt="logo"
+                                        class="w-full h-full object-cover rounded-full">
+                                </div>
+                                <h2 class="text-2xl font-semibold text-white">Rafael Marques</h2>
+                                <p class="text-gray-400 mt-1">Consultor em negócios</p>
+                                <div class="mt-6 flex space-x-4">
+                                    <a href="https://www.linkedin.com/in/rafammarques/" target="_blank"
+                                        class="text-gray-300 hover:text-blue-400 transition">
+                                        <i class="fab fa-linkedin text-xl"></i>
+                                        <!-- 
+                            </a>
+                            <a href="#" target="_blank" class="text-gray-300 hover:text-purple-400 transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            -->
+                                        <a href="https://x.com/rafamarxs" target="_blank"
+                                            class="text-gray-300 hover:text-blue-400 transition">
+                                            <i class="fab fa-twitter text-xl"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/rafamarxs/" target="_blank"
+                                            class="hover:text-white transition">
+                                            <i class="fab fa-instagram text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-semibold text-white mb-4">Informações de Contato</h3>
+
+                                <div class="space-y-5">
+                                    <div class="contact-link flex items-start">
+                                        <div class="bg-gray-800 p-3 rounded-full mr-4 contact-icon">
+                                            <i class="fas fa-envelope text-blue-400 text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-300">E-mail</h4>
+                                            <a href="mailto:rafael@mmarques.net"
+                                                class="text-blue-400 hover:text-blue-300 transition">rafael@mmarques.net</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-link flex items-start">
+                                        <div class="bg-gray-800 p-3 rounded-full mr-4 contact-icon">
+                                            <i class="fas fa-phone-alt text-green-400 text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-300">Telefone</h4>
+                                            <a href="tel:+5511958372200"
+                                                class="text-gray-200 hover:text-blue-400 transition">+55 (11)
+                                                95837-2200</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-link flex items-start">
+                                        <div class="bg-gray-800 p-3 rounded-full mr-4 contact-icon">
+                                            <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-300">WhatsApp</h4>
+                                            <a href="https://wa.me/5511958372200" target="_blank"
+                                                class="text-blue-200 hover:text-green-500 transition">+55 (11)
+                                                95837-2200</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-link flex items-start">
+                                        <div class="bg-gray-800 p-3 rounded-full mr-4 contact-icon">
+                                            <i class="fas fa-map-marker-alt text-yellow-400 text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-300">Localização</h4>
+                                            <p class="text-gray-200">Brasil e Portugal</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-gray-800">
+                                    <h4 class="font-medium text-gray-300 mb-3">Horário de Disponibilidade</h4>
+                                    <p class="text-gray-400">Segunda a Sexta: 9h às 18h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Still Have Questions -->
+                    <div class="mt-16 bg-gray-900 rounded-xl shadow-lg p-8 text-center">
+                        <h3 class="text-2xl font-bold text-white bg-opacity-40 mb-4">Ou me envie uma mensagem direta</h3>
+                        <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                            Entre em contato conosco pelo formulário abaixo ou através das nossas redes sociais. Nossa
+                            equipe
+                            está pronta para te ajudar!
+                        </p>
+                        <form action="https://formsubmit.co/rafael@mmarques.net" method="POST" class="max-w-lg mx-auto">
+                            <!-- Campos ocultos para personalização -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Novo contato do site de Casa de Bolos">
+                            <input type="hidden" name="_next" value="#faq">
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <input type="text" name="name" placeholder="Seu nome" required
+                                    class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent">
+                                <input type="email" name="email" placeholder="Seu e-mail" required
+                                    class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent">
+                            </div>
+                            <textarea name="message" placeholder="Sua mensagem" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent h-32 mb-4"></textarea>
+                            <button type="submit"
+                                class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-6 rounded-lg transition">
+                                Enviar Mensagem
+                            </button>
+
+                            <script>
+                                document.querySelector('form').addEventListener('submit', function (e) {
+                                    e.preventDefault();
+
+                                    const form = e.target;
+                                    const formData = new FormData(form);
+
+                                    // Envio AJAX
+                                    fetch(form.action, {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                        .then(response => {
+                                            if (response.ok) {
+                                                // Exibe mensagem de sucesso
+                                                const successMessage = document.createElement('div');
+                                                successMessage.innerHTML = `
+                                                    <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
+                                                    Mensagem enviada com sucesso! Responderemos em até 24h.
+                                                    </div>
+                                                    `;
+                                                form.parentNode.insertBefore(successMessage, form.nextSibling);
+
+                                                // Reseta o formulário
+                                                form.reset();
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                        });
+                                });
+                            </script>
+
+                        </form>
+                    </div>
+                </div>
+            </main>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-crown text-2xl text-yellow-500 mr-2"></i>
+                        <span class="text-xl font-bold text-white">MMarques <span
+                                class="text-yellow-500">Consultoria</span></span>
+                    </div>
+                    <p class="text-gray-500 mt-2 max-w-md">
+                        Tudo que você precisa para saber sobre Dropshipping, Importação e Exportação
+                    </p>
+                </div>
+
+                <div class="mb-8 md:mb-0">
+                    <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-500 hover:text-yellow-500 transition">Início</a></li>
+                        <li><a href="#about" class="text-gray-500 hover:text-yellow-500 transition">Sobre Nós</a></li>
+                        <li><a href="#services" class="text-gray-500 hover:text-yellow-500 transition">Serviços</a></li>
+                        <li><a href="#testimonials"
+                                class="text-gray-500 hover:text-yellow-500 transition">Depoimentos</a></li>
+                        <li><a href="#contact" class="text-gray-500 hover:text-yellow-500 transition">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-500 mb-4">Receba dicas exclusivas sobre dropshipping</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Seu e-mail"
+                            class="bg-gray-800 text-white py-2 px-4 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-yellow-500 w-full">
+                        <button
+                            class="bg-yellow-500 text-black font-bold py-2 px-4 rounded-r-lg hover:bg-yellow-600 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    &copy; 2023 MMarques Consultoria. Todos os direitos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-yellow-500 transition">Termos de Serviço</a>
+                    <a href="#" class="text-gray-500 hover:text-yellow-500 transition">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top"
+        class="fixed bottom-8 right-8 bg-yellow-500 text-black w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg transform transition hover:scale-110 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', function () {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show an alert
+                alert('Obrigado por sua mensagem! Entraremos em contato em breve.');
+                this.reset();
+            });
+        }
+
+        // Animation on Scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .slide-up');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                }
+            });
+        }
+
+        // Run once on page load
+        animateOnScroll();
+
+        // Then run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+
+</html>
